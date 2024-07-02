@@ -1,4 +1,4 @@
-# My Rails App
+# ChromeAIDemo
 
 ## Overview
 
@@ -33,7 +33,7 @@ Before you begin, ensure you have the following software installed:
 1. **Clone the repository**:
     ```sh
     git clone https://github.com/IsCathal/ChromeAiDemo
-    cd your-repo-name
+    cd ChromeAiDemo
     ```
 
 2. **Install dependencies**:
