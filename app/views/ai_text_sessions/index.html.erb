@@ -7,20 +7,41 @@
 <body>
   <h1>AI Text Session</h1>
   <button id="createSessionBtn">Create Session</button>
-  <div id="result"></div>
+  <div id="chatContainer" style="margin-top: 20px;">
+    <input type="text" id="userInput" placeholder="Type your message here" style="width: 80%;" />
+    <button id="sendBtn">Send</button>
+    <div id="chatLog" style="margin-top: 20px; border: 1px solid #ccc; padding: 10px;"></div>
+  </div>
 
   <script>
+    let session = null;
+
     document.getElementById('createSessionBtn').addEventListener('click', async () => {
       const canCreate = await window.ai.canCreateTextSession();
 
       if (canCreate !== "no") {
-        const session = await window.ai.createTextSession();
-
-        const result = await session.prompt("Write me a poem");
-        document.getElementById('result').innerText = result;
+        session = await window.ai.createTextSession();
+        document.getElementById('chatLog').innerHTML += '<p>Session started. You can start chatting now.</p>';
       } else {
-        document.getElementById('result').innerText = "Cannot create session on this device.";
+        document.getElementById('chatLog').innerHTML += '<p>Cannot create session on this device.</p>';
       }
+    });
+
+    document.getElementById('sendBtn').addEventListener('click', async () => {
+      if (!session) {
+        document.getElementById('chatLog').innerHTML += '<p>Please create a session first.</p>';
+        return;
+      }
+
+      const userInput = document.getElementById('userInput').value;
+      if (userInput.trim() === '') return;
+
+      document.getElementById('chatLog').innerHTML += `<p><strong>You:</strong> ${userInput}</p>`;
+
+      const result = await session.prompt(userInput);
+      document.getElementById('chatLog').innerHTML += `<p><strong>AI:</strong> ${result}</p>`;
+      
+      document.getElementById('userInput').value = '';
     });
   </script>
 </body>
