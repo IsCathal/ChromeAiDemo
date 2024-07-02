@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>AI Text Session</title>
+  <%= javascript_pack_tag 'ai_text_session' %>
+</head>
+<body>
+  <h1>AI Text Session</h1>
+  <button id="createSessionBtn">Create Session</button>
+  <div id="result"></div>
+
+  <script>
+    document.getElementById('createSessionBtn').addEventListener('click', async () => {
+      const canCreate = await window.ai.canCreateTextSession();
+
+      if (canCreate !== "no") {
+        const session = await window.ai.createTextSession();
+
+        const result = await session.prompt("Write me a poem");
+        document.getElementById('result').innerText = result;
+      } else {
+        document.getElementById('result').innerText = "Cannot create session on this device.";
+      }
+    });
+  </script>
+</body>
+</html>
