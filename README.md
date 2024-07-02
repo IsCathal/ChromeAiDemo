@@ -4,6 +4,9 @@
 
 Welcome to **ChromeAIDemo**, a Ruby on Rails application designed to demonstrate the capabilities of AI built into Chrome. This README will guide you through setting up and running the application on your local machine.
 
+You also need o config Chrome DEV Browser to access Gemini Nano AI model
+Might do a slideDeckk on that!
+
 
 ## Table of Contents
 
