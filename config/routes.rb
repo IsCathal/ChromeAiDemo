@@ -8,6 +8,8 @@ Rails.application.routes.draw do
   root 'ai_text_sessions#index'
   #always plural here
   resources :debugs,  except: [:destroy]
+  resources :streams,  except: [:destroy]
+
 
 
 
