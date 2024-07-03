@@ -38,9 +38,13 @@
 
       document.getElementById('chatLog').innerHTML += `<p><strong>You:</strong> ${userInput}</p>`;
 
-      const result = await session.prompt(userInput);
-      document.getElementById('chatLog').innerHTML += `<p><strong>AI:</strong> ${result}</p>`;
-      
+      const stream = session.promptStreaming(userInput);
+      document.getElementById('chatLog').innerHTML += '<p><strong>AI:</strong> <span id="aiResponse"></span></p>';
+
+      for await (const chunk of stream) {
+        document.getElementById('aiResponse').innerHTML += chunk;
+      }
+
       document.getElementById('userInput').value = '';
     });
   </script>
