@@ -18,21 +18,20 @@
     // This will hold AI text session object
     let session = null;
     /*On event
-    Check if the session is created
-    If not, display a message to create a session
+      Check if the session is created
+      If not, display a message to create a session
 
-    The value of the input field with ID userInput is retrieved and stored
-    in the userInput variable. If the input is empty or consists only of whitespace, 
-    the function exits.
+      The value of the input field with ID userInput is retrieved and stored
+      in the userInput variable. If the input is empty or consists only of whitespace, 
+      the function exits.
 
-    The user's input is displayed in the chatLog with the prefix "You:".
+      The user's input is displayed in the chatLog with the prefix "You:".
 
-   The input is sent to the AI session using session.prompt(userInput),
-   and the AI's response is awaited.
+      The input is sent to the AI session using session.prompt(userInput),
+      and the AI's response is awaited.
 
-   The AI's response is then displayed in the chatLog with the prefix "AI:".
-   The input field userInput is cleared for the next input.
-
+      The AI's response is then displayed in the chatLog with the prefix "AI:".
+      The input field userInput is cleared for the next input.
     */
 
     document.getElementById('createSessionBtn').addEventListener('click', async () => {
