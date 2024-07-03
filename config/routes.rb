@@ -11,6 +11,8 @@ Rails.application.routes.draw do
   resources :streams,  except: [:destroy]
   resources :querys,  except: [:destroy]
   resources :joyces,  except: [:destroy]
+  resources :tables,  except: [:destroy]
+
 
 
 
