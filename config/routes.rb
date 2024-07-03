@@ -9,6 +9,8 @@ Rails.application.routes.draw do
   #always plural here
   resources :debugs,  except: [:destroy]
   resources :streams,  except: [:destroy]
+  resources :querys,  except: [:destroy]
+
 
 
 
